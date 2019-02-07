@@ -1,14 +1,12 @@
 window.addEventListener("load", main);
-var tab = document.createElement(table);
+var nbPeople = 20;
 
 function main(event){
-    for(i = 0; i < 10; i++){
-        
-    }
+    generareTable();
 }
 
-function generatePeople(){
-    var people = {
+function generatePeople(){ //Génère une personne
+    people = {
         LastName : faker.fake("{{name.lastName}}"),
         FirstName : faker.fake("{{name.firstName}}"),
         Age : randRange(18, 100),
@@ -19,7 +17,23 @@ function generatePeople(){
     return people; 
 }
 
-function createTr(value){
+function generareTable(){
+    var tab = document.createElement("table");
+
+    for(var i = 0; i < nbPeople; i++){
+        var people = generatePeople(); //à chaque boucle une nouvelle personne est créee
+        var tr = document.createElement("tr");
+
+        for(var valeur in people){
+            var td = document.createElement("td");
+            var tdText = document.createTextNode(`${people[valeur]}`);
+
+            td.appendChild(tdText);
+            tr.appendChild(td);
+        }
+        tab.appendChild(tr);
+    }
+    document.body.appendChild(tab);
 }
 
 function randRange(min, max) {
