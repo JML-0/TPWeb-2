@@ -1,25 +1,12 @@
 window.addEventListener("load", generareTable);
 var nbPeople = 20;
 
-function generatePeople(){ //Génère une personne
-    people = {
-        LastName : faker.fake("{{name.lastName}}"),
-        FirstName : faker.fake("{{name.firstName}}"),
-        Age : randRange(18, 100),
-        Job : faker.fake("{{company.companyName}}"),
-        Tel : faker.fake("{{phone.phoneNumber}}"),
-        Address : faker.fake("{{address.streetAddress}}")
-    }
-    return people; 
-}
-
 function generareTable(){
     var tab = document.createElement("table");
     var people = generatePeople();
     
     //Titre des colonnes en fonction du nom clé de l'objet people
     var trTh = document.createElement("tr");
-
     for(var value in people){
         var th = document.createElement("th");
         var thText = document.createTextNode(`${value}`);
@@ -32,7 +19,7 @@ function generareTable(){
     //---------------------------------------------------------------
     
     for(var i = 0; i < nbPeople; i++){
-        people = generatePeople(); //à chaque boucle une nouvelle personne est créee
+        people = generatePeople(); //nouvelle personne
         var tr = document.createElement("tr");
 
         for(var value in people){
@@ -48,6 +35,18 @@ function generareTable(){
     document.body.appendChild(tab);
 }
 
-function randRange(min, max) {
-	return Math.floor(Math.random() * (max-min+1)) + min;
+function generatePeople(){
+    people = {
+        LastName : faker.fake("{{name.lastName}}"),
+        FirstName : faker.fake("{{name.firstName}}"),
+        Age : randRange(18, 100),
+        Job : faker.fake("{{name.jobType}}"),
+        Tel : faker.fake("{{phone.phoneNumber}}"),
+        Address : faker.fake("{{address.streetAddress}}") + ", " + 
+                faker.fake("{{address.city}}") + ", ["+
+                faker.fake("{{address.country}}") + "]"
+    }
+    return people; 
 }
+
+function randRange(min, max) {return Math.floor(Math.random() * (max-min+1)) + min;}
