@@ -17,19 +17,32 @@ function generatePeople(){ //Génère une personne
     return people; 
 }
 
-function generareTable(){
+function generareTable(people){
     var tab = document.createElement("table");
+    var trTh = document.createElement("tr");
+    var people = generatePeople();
+    
+    for(var value in people){
+        var th = document.createElement("th");
+        var thText = document.createTextNode(`${value}`);
 
+        th.appendChild(thText);
+        trTh.appendChild(th);
+
+        tab.appendChild(trTh);
+    }
+    
     for(var i = 0; i < nbPeople; i++){
         var people = generatePeople(); //à chaque boucle une nouvelle personne est créee
         var tr = document.createElement("tr");
 
-        for(var valeur in people){
+        for(var value in people){
             var td = document.createElement("td");
-            var tdText = document.createTextNode(`${people[valeur]}`);
+            var tdText = document.createTextNode(`${people[value]}`);
 
             td.appendChild(tdText);
             tr.appendChild(td);
+            
         }
         tab.appendChild(tr);
     }
