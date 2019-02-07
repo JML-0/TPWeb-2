@@ -1,9 +1,5 @@
-window.addEventListener("load", main);
+window.addEventListener("load", generareTable);
 var nbPeople = 20;
-
-function main(event){
-    generareTable();
-}
 
 function generatePeople(){ //Génère une personne
     people = {
@@ -17,11 +13,13 @@ function generatePeople(){ //Génère une personne
     return people; 
 }
 
-function generareTable(people){
+function generareTable(){
     var tab = document.createElement("table");
-    var trTh = document.createElement("tr");
     var people = generatePeople();
     
+    //Titre des colonnes en fonction du nom clé de l'objet people
+    var trTh = document.createElement("tr");
+
     for(var value in people){
         var th = document.createElement("th");
         var thText = document.createTextNode(`${value}`);
@@ -31,9 +29,10 @@ function generareTable(people){
 
         tab.appendChild(trTh);
     }
+    //---------------------------------------------------------------
     
     for(var i = 0; i < nbPeople; i++){
-        var people = generatePeople(); //à chaque boucle une nouvelle personne est créee
+        people = generatePeople(); //à chaque boucle une nouvelle personne est créee
         var tr = document.createElement("tr");
 
         for(var value in people){
