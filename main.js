@@ -36,7 +36,7 @@ function generareTable(){
 }
 
 function generatePeople(){
-    people = {
+    var people = {
         LastName : faker.fake("{{name.lastName}}"),
         FirstName : faker.fake("{{name.firstName}}"),
         Age : randRange(18, 100),
