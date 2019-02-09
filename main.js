@@ -1,5 +1,5 @@
 window.addEventListener("load", generareTable);
-var nbPeople = 20;
+var nbPeople = 50;
 
 function generareTable(){
     var tab = document.createElement("table");
@@ -17,7 +17,7 @@ function generareTable(){
         tab.appendChild(trTh);
     }
     //---------------------------------------------------------------
-    
+
     for(var i = 0; i < nbPeople; i++){
         people = generatePeople(); //nouvelle personne
         var tr = document.createElement("tr");
