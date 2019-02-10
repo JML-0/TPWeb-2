@@ -13,11 +13,9 @@ function generareTable(){
 
         th.appendChild(thText);
         trTh.appendChild(th);
-
         tab.appendChild(trTh);
     }
-    //---------------------------------------------------------------
-
+    
     for(var i = 0; i < nbPeople; i++){
         people = generatePeople(); //nouvelle personne
         var tr = document.createElement("tr");
@@ -28,7 +26,6 @@ function generareTable(){
 
             td.appendChild(tdText);
             tr.appendChild(td);
-            
         }
         tab.appendChild(tr);
     }
